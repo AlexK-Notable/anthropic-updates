@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Anthropic Briefing — May 25–Jun 4, 2026</title>
+<style>
+  :root{
+    --ink:#1c1b18;
+    --ink-soft:#403d37;
+    --muted:#6f6a61;
+    --faint:#8d877c;
+    --clay:#b8462a;
+    --clay-deep:#9a3a22;
+    --clay-tint:#f6ece5;
+    --clay-tint2:#fbf5f0;
+    --slate:#2a2c2e;
+    --line:#ddd6cb;
+    --line-strong:#c7bdad;
+    --paper:#ffffff;
+    --cream:#faf6f0;
+  }
+
+  @page{
+    size: Letter;
+    margin: 17mm 16mm 18mm 16mm;
+  }
+  @page{
+    @bottom-left{ content: "The Anthropic Briefing"; font-family:"Inter",sans-serif; font-size:7.4pt; color:#8d877c; }
+    @bottom-center{ content: "Coverage window · 25 May – 4 Jun 2026"; font-family:"Inter",sans-serif; font-size:7.4pt; color:#8d877c; letter-spacing:.02em;}
+    @bottom-right{ content: counter(page) " / " counter(pages); font-family:"Inter",sans-serif; font-size:7.4pt; color:#8d877c; }
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:"Noto Serif","Georgia","Liberation Serif",serif;
+    color:var(--ink);
+    font-size:10.4pt;
+    line-height:1.52;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  p{ margin:0 0 7.5pt; }
+  a{ color:var(--clay-deep); text-decoration:none; }
+  strong{ color:var(--ink); font-weight:600; }
+  em{ font-style:italic; }
+  .sans{ font-family:"Inter","Helvetica Neue",Arial,sans-serif; }
+  .mono{ font-family:"DejaVu Sans Mono","Liberation Mono",monospace; }
+  code,.code{
+    font-family:"DejaVu Sans Mono","Liberation Mono",monospace;
+    font-size:8.4pt;
+    background:var(--clay-tint);
+    color:var(--clay-deep);
+    padding:0.5pt 3pt;
+    border-radius:3px;
+    border:0.5pt solid #ecdfd3;
+  }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{
+    border-top:3pt solid var(--ink);
+    border-bottom:1pt solid var(--ink);
+    padding:9pt 0 4pt;
+    margin-bottom:0;
+  }
+  .masthead .kicker{
+    font-family:"Inter",sans-serif;
+    font-size:8pt;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--clay);
+    font-weight:600;
+    text-align:center;
+    margin-bottom:5pt;
+  }
+  .masthead h1{
+    font-family:"Inter",sans-serif;
+    font-weight:800;
+    font-size:41pt;
+    letter-spacing:-0.022em;
+    line-height:0.96;
+    text-align:center;
+    margin:0;
+    color:var(--ink);
+  }
+  .masthead .sub{
+    text-align:center;
+    font-style:italic;
+    color:var(--muted);
+    font-size:10.5pt;
+    margin-top:7pt;
+  }
+  .dateline{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:"Inter",sans-serif;
+    font-size:7.8pt;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-bottom:2.4pt solid var(--ink);
+    padding:5pt 0 6pt;
+    margin-bottom:13pt;
+  }
+  .dateline .mid{ color:var(--clay); font-weight:600; }
+
+  /* ---------- DECK ---------- */
+  .deck{
+    font-size:12.4pt;
+    line-height:1.5;
+    color:var(--ink-soft);
+    margin-bottom:13pt;
+  }
+  .deck .lead-cap::first-letter{
+    initial-letter:2;
+    font-family:"Inter",sans-serif;
+    font-weight:800;
+    color:var(--clay);
+    margin-right:5pt;
+  }
+  .deck b{ color:var(--ink); }
+
+  /* ---------- BY THE NUMBERS ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border:1pt solid var(--line-strong);
+    border-radius:7px;
+    overflow:hidden;
+    margin:0 0 14pt;
+    background:var(--cream);
+    break-inside:avoid;
+  }
+  .stat{
+    padding:9pt 10pt 8pt;
+    border-right:1pt solid var(--line);
+    border-bottom:1pt solid var(--line);
+  }
+  .stat:nth-child(3n){ border-right:none; }
+  .stat:nth-child(n+4){ }
+  .stat .fig{
+    font-family:"Inter",sans-serif;
+    font-weight:800;
+    font-size:18pt;
+    letter-spacing:-0.02em;
+    color:var(--clay-deep);
+    line-height:1;
+  }
+  .stat .lab{
+    font-family:"Inter",sans-serif;
+    font-size:7.5pt;
+    line-height:1.25;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:var(--muted);
+    margin-top:4pt;
+  }
+
+  /* ---------- CONTENTS ---------- */
+  .toc{
+    border:1pt solid var(--line-strong);
+    border-left:3pt solid var(--clay);
+    border-radius:0 6px 6px 0;
+    padding:9pt 12pt 9pt;
+    margin-bottom:6pt;
+    background:var(--clay-tint2);
+    break-inside:avoid;
+  }
+  .toc h4{
+    font-family:"Inter",sans-serif;
+    font-size:8pt;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin:0 0 6pt;
+  }
+  .toc ol{
+    margin:0; padding:0; list-style:none;
+    columns:2; column-gap:20pt;
+    font-family:"Inter",sans-serif;
+    font-size:8.7pt;
+  }
+  .toc li{
+    padding:1.7pt 0;
+    color:var(--ink-soft);
+    break-inside:avoid;
+  }
+  .toc li b{ color:var(--clay-deep); font-weight:700; font-variant-numeric:tabular-nums; margin-right:5pt;}
+
+  /* ---------- SECTION HEADINGS ---------- */
+  section{ margin-top:15pt; }
+  h2.sec{
+    font-family:"Inter",sans-serif;
+    font-weight:800;
+    font-size:16.5pt;
+    letter-spacing:-0.015em;
+    color:var(--ink);
+    margin:0 0 3pt;
+    padding-top:7pt;
+    border-top:1.4pt solid var(--ink);
+    break-after:avoid;
+    display:flex;
+    align-items:baseline;
+    gap:8pt;
+  }
+  h2.sec .num{
+    font-size:9.5pt;
+    font-weight:700;
+    color:var(--clay);
+    letter-spacing:0;
+  }
+  .sec-tag{
+    font-family:"Inter",sans-serif;
+    font-size:7.6pt;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin:0 0 9pt;
+    break-after:avoid;
+  }
+  h3.sub{
+    font-family:"Inter",sans-serif;
+    font-weight:700;
+    font-size:11pt;
+    color:var(--clay-deep);
+    margin:11pt 0 4pt;
+    break-after:avoid;
+  }
+
+  /* ---------- CALLOUTS / ASIDES ---------- */
+  .callout{
+    background:var(--clay-tint);
+    border:0.8pt solid #ecd9cc;
+    border-left:3pt solid var(--clay);
+    border-radius:0 6px 6px 0;
+    padding:8pt 11pt;
+    margin:9pt 0;
+    font-size:9.6pt;
+    line-height:1.46;
+    break-inside:avoid;
+  }
+  .callout .ttl{
+    font-family:"Inter",sans-serif;
+    font-weight:700;
+    font-size:7.7pt;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin-bottom:3pt;
+    display:block;
+  }
+  .aside{
+    background:var(--cream);
+    border:0.8pt solid var(--line);
+    border-radius:6px;
+    padding:8pt 11pt;
+    margin:9pt 0;
+    font-size:9.4pt;
+    line-height:1.46;
+    break-inside:avoid;
+  }
+  .aside .ttl{
+    font-family:"Inter",sans-serif;
+    font-weight:700;
+    font-size:8pt;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:4pt;
+    display:block;
+  }
+  .aside.danger{ border-left:3pt solid #b8462a; }
+
+  .pullquote{
+    font-family:"Inter",sans-serif;
+    font-weight:600;
+    font-size:13pt;
+    line-height:1.3;
+    color:var(--clay-deep);
+    border-top:1pt solid var(--line-strong);
+    border-bottom:1pt solid var(--line-strong);
+    padding:9pt 4pt;
+    margin:11pt 0;
+    text-align:center;
+    break-inside:avoid;
+  }
+  .pullquote .cite{
+    display:block;
+    font-family:"Inter",sans-serif;
+    font-weight:500;
+    font-style:normal;
+    font-size:8pt;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:6pt;
+  }
+
+  /* ---------- LISTS ---------- */
+  ul.tight{ margin:4pt 0 8pt; padding-left:14pt; }
+  ul.tight li{ margin:0 0 4pt; padding-left:2pt; }
+  ul.tight li::marker{ color:var(--clay); }
+  ol.steps{ margin:4pt 0 8pt; padding-left:16pt; }
+  ol.steps li{ margin:0 0 5pt; }
+  ol.steps li::marker{ font-family:"Inter",sans-serif; font-weight:700; color:var(--clay); }
+
+  /* ---------- RELEASE TABLE ---------- */
+  table.rel{
+    width:100%;
+    border-collapse:collapse;
+    font-size:8.7pt;
+    margin:8pt 0 9pt;
+  }
+  table.rel th{
+    font-family:"Inter",sans-serif;
+    font-size:7.4pt;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    text-align:left;
+    color:#fff;
+    background:var(--slate);
+    padding:4.5pt 7pt;
+  }
+  table.rel td{
+    padding:5pt 7pt;
+    border-bottom:0.6pt solid var(--line);
+    vertical-align:top;
+    line-height:1.38;
+  }
+  table.rel tr:nth-child(even) td{ background:var(--cream); }
+  table.rel td.v{ font-family:"DejaVu Sans Mono","Liberation Mono",monospace; font-size:8pt; color:var(--clay-deep); white-space:nowrap; font-weight:700;}
+  table.rel td.d{ font-family:"Inter",sans-serif; font-size:7.7pt; color:var(--muted); white-space:nowrap; }
+  table.rel tr{ break-inside:avoid; }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{ margin:6pt 0 4pt; }
+  .tl-row{
+    display:grid;
+    grid-template-columns:62pt 1fr;
+    gap:9pt;
+    padding:4.5pt 0;
+    border-bottom:0.6pt solid var(--line);
+    break-inside:avoid;
+    font-size:9.4pt;
+  }
+  .tl-row .date{
+    font-family:"Inter",sans-serif;
+    font-weight:700;
+    font-size:8pt;
+    color:var(--clay-deep);
+    padding-top:1pt;
+  }
+  .tl-row .ev b{ color:var(--ink); }
+  .sev{
+    font-family:"Inter",sans-serif;
+    font-size:6.6pt;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:1pt 4pt;
+    border-radius:3px;
+    vertical-align:middle;
+    margin-right:4pt;
+  }
+  .sev.maj{ background:#f4d9cf; color:#9a3a22; }
+  .sev.min{ background:#e9e3d6; color:#6f6a61; }
+
+  /* ---------- SOURCES ---------- */
+  .src{
+    font-family:"Inter",sans-serif;
+    font-size:8.2pt;
+    line-height:1.5;
+    color:var(--ink-soft);
+  }
+  .src b{ color:var(--clay-deep); }
+  .chip{
+    display:inline-block;
+    font-family:"Inter",sans-serif;
+    font-size:7.3pt;
+    letter-spacing:.03em;
+    background:var(--cream);
+    border:0.6pt solid var(--line-strong);
+    border-radius:10px;
+    padding:1.5pt 7pt;
+    margin:0 3pt 4pt 0;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+
+  .endrule{
+    text-align:center;
+    color:var(--clay);
+    font-size:11pt;
+    letter-spacing:.5em;
+    margin:13pt 0 4pt;
+  }
+  .colophon{
+    font-family:"Inter",sans-serif;
+    font-size:7.8pt;
+    line-height:1.5;
+    color:var(--muted);
+    border-top:1pt solid var(--line);
+    padding-top:7pt;
+    margin-top:6pt;
+  }
+  .two-col{ columns:2; column-gap:18pt; }
+  .two-col p{ margin-top:0; }
+  .nobreak{ break-inside:avoid; }
+</style>
+</head>
+<body>
+
+  <!-- ====================== MASTHEAD ====================== -->
+  <div class="masthead">
+    <div class="kicker">An Applied-AI Engineer's Digest</div>
+    <h1>THE ANTHROPIC BRIEFING</h1>
+    <div class="sub">Eleven days that took Anthropic from a new flagship model to the doorstep of the public markets</div>
+  </div>
+  <div class="dateline">
+    <span>Weekly Edition · Vol. 1 No. 1</span>
+    <span class="mid">Coverage 25 May – 4 Jun 2026</span>
+    <span>Compiled from 7 daily briefings</span>
+  </div>
+
+  <!-- ====================== DECK ====================== -->
+  <p class="deck lead-cap">This issue covers a uniquely dense stretch. In a single afternoon — <b>28 May</b> — Anthropic shipped <b>Claude Opus 4.8</b> and disclosed a <b>$65B Series&nbsp;H at a $965B post-money valuation</b>. Four days later it <b>confidentially filed a draft S-1 with the SEC</b>, turning a year of IPO rumors into a documented option. Underneath the headlines, Claude Code shipped <b>ten releases</b>, the agent SDKs realigned, Project Glasswing tripled in size, and the reliability log filled with model incidents — capped by a major Claude Code outage on 3 June. Here is the whole arc, distilled for people who build on it.</p>
+
+  <!-- ====================== BY THE NUMBERS ====================== -->
+  <div class="stats">
+    <div class="stat"><div class="fig">Opus 4.8</div><div class="lab">New flagship, shipped 28 May — same $5/$25 price as 4.7</div></div>
+    <div class="stat"><div class="fig">$965B</div><div class="lab">Series H post-money valuation · $65B raised</div></div>
+    <div class="stat"><div class="fig">S-1</div><div class="lab">Draft filed confidentially with the SEC, 1 Jun</div></div>
+    <div class="stat"><div class="fig">10×</div><div class="lab">Claude Code releases, v2.1.152 → v2.1.162</div></div>
+    <div class="stat"><div class="fig">~150</div><div class="lab">Project Glasswing partners, up from ~50, in 15+ countries</div></div>
+    <div class="stat"><div class="fig">33 → 56%</div><div class="lab">Cyber actors rated medium-risk-or-higher, H1 → H2</div></div>
+  </div>
+
+  <!-- ====================== CONTENTS ====================== -->
+  <div class="toc">
+    <h4>In this issue</h4>
+    <ol>
+      <li><b>01</b> Lead — A model, a mega-round, an IPO path</li>
+      <li><b>02</b> Models &amp; the API</li>
+      <li><b>03</b> Claude Code — ten releases in eleven days</li>
+      <li><b>04</b> The SDK lockstep</li>
+      <li><b>05</b> Security &amp; cyber — Glasswing, Mythos, ATT&amp;CK</li>
+      <li><b>06</b> Research &amp; engineering</li>
+      <li><b>07</b> Reliability watch</li>
+      <li><b>08</b> Rumors, leaks &amp; money</li>
+      <li><b>09</b> From the community</li>
+      <li><b>10</b> The practitioner's checklist</li>
+    </ol>
+  </div>
+
+  <!-- ====================== 01 LEAD ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">01</span> A model, a mega-round, and a path to the public markets</h2>
+    <div class="sec-tag">Lead Story · The throughline of the window</div>
+
+    <p>If you read only one thing about this period, read it as three moves in one direction. On <b>28 May</b>, Anthropic made Claude Opus 4.8 generally available <em>and</em> announced a <b>$65 billion Series H</b> that put post-money valuation at <b>$965 billion</b>, with self-reported run-rate revenue that "crossed $47B earlier this month." The round was led by Altimeter, Dragoneer, Greenoaks, and Sequoia, co-led by Capital Group, Coatue, D1, GIC, ICONIQ, and XN, and folded in $15B of previously-committed hyperscaler money (including $5B from Amazon) plus memory/chip partners Micron, Samsung, and SK&nbsp;hynix. Several outlets framed it as Anthropic overtaking OpenAI as the most valuable AI company.</p>
+
+    <p>Then, on <b>1 June</b>, the corporate-structure shoe dropped: Anthropic <b>confidentially submitted a draft Form S-1 to the SEC</b>. It is a Rule&nbsp;135 announcement — no share count, no price — so it legally separates "we <em>can</em> IPO" from "we <em>will</em>." But it is the move that typically precedes a 6–12-month IPO window, and it converts the long-running funding rumors (a "$30B at $900B" leak we tracked on 27 May; the WSJ/TechCrunch "first profitable quarter" narrative) into something concrete you can cite in a vendor-risk conversation.</p>
+
+    <div class="pullquote">
+      The funding rumors are now first-party numbers. $47B run-rate and a $965B valuation are figures you can put in a budget memo — not press speculation.
+      <span class="cite">Series H announcement · 28 May 2026</span>
+    </div>
+
+    <p>The skeptics arrived on schedule. Michael Burry ("The Big Short") publicly argued neither SpaceX nor Anthropic is worth $1T (134 pts on Hacker News), and <em>The Economist</em>'s "Can the stockmarket swallow Anthropic, SpaceX and OpenAI?" was the single most-discussed thread of the window at <b>712 points / 1,257 comments</b>. None of that changes the operational picture — but if you are quoting the Series H valuation to justify spend, expect the counter-narrative in the same meeting.</p>
+
+    <div class="callout">
+      <span class="ttl">Why it matters</span>
+      The through-line for builders: the company you depend on is simultaneously shipping its most capable model at flat pricing, raising at a near-trillion-dollar valuation, and laying IPO groundwork. Read that as <em>stability of roadmap</em> — and as growing pressure to convert subsidized usage into per-token revenue, the pricing shift Simon Willison flagged this week (see §9).
+    </div>
+  </section>
+
+  <!-- ====================== 02 MODELS & API ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">02</span> Models &amp; the API</h2>
+    <div class="sec-tag">What changed for people calling the Messages API</div>
+
+    <h3 class="sub">Claude Opus 4.8 — a same-price capability bump</h3>
+    <p>Model string <code>claude-opus-4-8</code>, GA 28 May, available everywhere (API, Claude Code, claude.ai, Cowork) on day one. The platform facts that matter for building:</p>
+    <ul class="tight">
+      <li><b>Pricing unchanged from 4.7:</b> $5 / Mtok input, $25 / Mtok output; fast mode $10 / $50. Fast mode on 4.8 is roughly <b>3× cheaper</b> than on prior models (2× the standard rate for 2.5× the speed).</li>
+      <li><b>1M-token context by default; 128K max output.</b> Effort <b>defaults to <code>high</code></b> on every surface, including the raw API, with <em>adaptive thinking</em> (reasoning only fires when a turn needs it). <code>/effort xhigh</code> exists for the hardest tasks.</li>
+      <li><b>Prompt-cache minimum lowered to 1,024 tokens</b> — cheaper to cache short system prefixes than on 4.7.</li>
+      <li><b>Reliability claim:</b> ~<b>4× less likely</b> than Opus 4.7 to let flaws in its own code pass unremarked; the Alignment team reports misaligned-behavior rates "similar to" Mythos Preview. Launch-tester benchmarks: 84% on Online-Mind2Web (computer use), first model past 10% overall on a Legal Agent Benchmark, Genie multimodal at 61% lower token cost than 4.7.</li>
+    </ul>
+
+    <h3 class="sub">Two Opus-4.8-only Messages API features — no beta header</h3>
+    <ul class="tight">
+      <li><b>Mid-conversation system messages.</b> You can now place <code>role:"system"</code> entries at non-first positions in the <code>messages</code> array to update instructions mid-task <em>while preserving prompt-cache hits</em> — instead of routing changes through a user turn. Directly useful for long-running agents that need to revise permissions, token budgets, or environment context mid-run.</li>
+      <li><b>Refusal categories in <code>stop_details</code>.</b> When Opus 4.8 declines, the API returns a refusal category so you can route different refusal classes to the right next step instead of string-matching error text. By 3 June (Claude Code v2.1.162 / agent-SDK v0.3.162) the same <code>stop_reason:"refusal"</code> and <code>stop_details</code> also land on local-session and SDK transcripts.</li>
+    </ul>
+
+    <div class="aside">
+      <span class="ttl">Multi-cloud note</span>
+      As of Claude Code v2.1.158 (30 May), <b>Auto mode is available on Bedrock, Vertex, and Foundry</b> for Opus 4.7 and 4.8 — opt-in via <code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>. Previously the auto-approval classifier was first-party only. If you route through a hyperscaler for compliance or billing, you no longer give up the layer that (per Anthropic) catches ~83% of overeager behaviors.
+    </div>
+
+    <p><span class="sans" style="font-size:9pt;font-weight:600;color:var(--muted);">No new model since.</span> Opus 4.8 remained the newest first-party model through 4 June; Mythos stays gated to Project Glasswing (see §5). The base <code>anthropic-sdk-*</code> packages did not move in the final stretch — the Opus-4.8 feature adds landed in <code>anthropic-sdk-python</code> v0.105.0 and <code>anthropic-sdk-typescript</code> sdk-v0.100.0 on launch day.</p>
+  </section>
+
+  <!-- ====================== 03 CLAUDE CODE ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">03</span> Claude Code — ten releases in eleven days</h2>
+    <div class="sec-tag">The release train, decoded</div>
+
+    <p>The window opened on v2.1.150 and closed on v2.1.162. Below is the practitioner-relevant signal, release by release (v2.1.151/.155/.159 were internal-only and are omitted from detail).</p>
+
+    <table class="rel">
+      <thead>
+        <tr><th style="width:50pt;">Version</th><th style="width:48pt;">Date</th><th>Why you care</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="v">2.1.152</td><td class="d">27 May</td><td><b><code>/code-review --fix</code> writes findings back to your tree</b>; <code>/simplify</code> now calls it. <code>disallowed-tools</code> skill/command frontmatter; <code>/reload-skills</code> + <code>SessionStart → reloadSkills</code>; new <code>MessageDisplay</code> hook. <b>Auto mode no longer needs opt-in consent.</b> Fixes under-reported <code>cache_creation_input_tokens</code> (expect a metrics discontinuity).</td></tr>
+        <tr><td class="v">2.1.153</td><td class="d">28 May</td><td><b>Security:</b> fixed a gateway credential leak (custom gateway could receive the user's own OAuth token) and subagent-frontmatter MCP servers bypassing <code>--strict-mcp-config</code> / managed allow-deny policy. <code>/model</code> now saves as the default; the picker keybinding <code>d</code> → <code>s</code>.</td></tr>
+        <tr><td class="v">2.1.154</td><td class="d">28 May</td><td><b>The Opus 4.8 vehicle.</b> Ships <b>dynamic workflows</b> (research preview — plan + tens-to-hundreds of background subagents + self-verification; Enterprise/Team/Max). Lean system prompt becomes default; <code>/simplify</code> is cleanup-only. Improved auto-mode detection of bulk-exfil.</td></tr>
+        <tr><td class="v">2.1.156</td><td class="d">29 May</td><td>Hotfix: thinking blocks were being modified on Opus 4.8, causing API errors. <b>If you run 4.8 in Claude Code, this is the floor.</b></td></tr>
+        <tr><td class="v">2.1.157</td><td class="d">29 May</td><td>Plugins in <code>.claude/skills</code> <b>auto-load, no marketplace</b>; <code>claude plugin init</code> scaffolds one. Per-session <code>agent</code> override (<code>--agent</code>). OTel <code>tool_decision</code> gains <code>tool_parameters</code>. Worktree-hygiene fixes.</td></tr>
+        <tr><td class="v">2.1.158</td><td class="d">30 May</td><td><b>Auto mode on Bedrock / Vertex / Foundry</b> for Opus 4.7 &amp; 4.8 (<code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>).</td></tr>
+        <tr><td class="v">2.1.160</td><td class="d">2 Jun</td><td><b>Dynamic-workflow trigger renamed <code>workflow</code> → <code>ultracode</code></b> (asking in your own words still works). New write-confirmation prompts before touching shell startup files and exec-granting build configs (<code>.npmrc</code>, <code>.bazelrc</code>, <code>.pre-commit-config.yaml</code>…). <code>grep</code> now satisfies read-before-edit. <code>CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE</code> removed.</td></tr>
+        <tr><td class="v">2.1.161</td><td class="d">2 Jun</td><td><code>OTEL_RESOURCE_ATTRIBUTES</code> become metric labels (slice usage by team/repo). <b>Parallel tool calls are now independent</b> — one failed Bash call no longer cancels the batch. <b>Secret-redaction in <code>claude mcp</code> list/get/add.</b></td></tr>
+        <tr><td class="v">2.1.162</td><td class="d">3 Jun</td><td><code>claude agents --json</code> adds <code>waitingFor</code>. <b><code>--tools</code> accepts <code>Grep</code>/<code>Glob</code> on native builds again.</b> Autocomplete click now <em>fills</em> a slash command (press Enter to run). WebFetch deny/allow rules now override the preapproved-host allowlist. MCP <code>timeout</code> &lt; 1000 ms no longer aborts every call.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="aside danger">
+      <span class="ttl">Heads-up — secrets &amp; the <code>workflow</code> rename</span>
+      Two items that bite if you miss them: <b>(1)</b> the <code>workflow</code> trigger keyword is gone — update any docs, scripts, or hooks that key off the word "workflow" to <code>ultracode</code>. <b>(2)</b> Secret-redaction in <code>claude mcp</code> only arrived in v2.1.161; treat any earlier scraped <code>claude mcp</code> output or shared session screencap as having leaked credential headers and URL secrets.
+    </div>
+
+    <p><span class="sans" style="font-size:9pt;font-weight:600;color:var(--muted);">Catch-up from the gap:</span> v2.1.149 (22 May) was the most material missed release — <code>/usage</code> per-category breakdown (skills, subagents, plugins, MCP cost) plus a cluster of sandbox-boundary security fixes (PowerShell <code>cd</code> bypass, worktree write-allowlist over-scoping).</p>
+  </section>
+
+  <!-- ====================== 04 SDK ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">04</span> The SDK lockstep</h2>
+    <div class="sec-tag">Agent SDKs realign after a 10-day Python stall</div>
+
+    <p>For most of the window the Python agent SDK lagged a full Claude Code cycle behind TypeScript. That gap is now closed.</p>
+    <ul class="tight">
+      <li><b><code>claude-agent-sdk-typescript</code></b> moved in lockstep with Claude Code (v0.3.152 → v0.3.162). Notable: v0.3.160 fixed hook callbacks swallowing abort signals; v0.3.161 made <code>initialize</code> idempotent and live-applies <code>agent</code> changes; v0.3.162 changed the <b>default search behavior on native builds</b> — SDK sessions now default to embedded <code>find</code>/<code>grep</code> in Bash rather than registering the dedicated <code>Grep</code>/<code>Glob</code> tools.</li>
+      <li><b><code>claude-agent-sdk-python</code></b> resumed shipping after stalling at v0.2.87 since 23 May: <b>v0.2.88</b> (2 Jun) ported session stores from raw <code>asyncio</code> to <code>anyio</code>, fixing a Trio crash; <b>v0.2.89</b> (3 Jun) is a CLI-parity bump. TS and Python are back in the same cohort (v0.3.162 / v0.2.89 / CLI 2.1.162).</li>
+    </ul>
+    <div class="callout">
+      <span class="ttl">Action item</span>
+      If you run an SDK orchestrator with <b>hook-based search auditing</b> (<code>canUseTool</code> / interception on <code>Grep</code>/<code>Glob</code>), verify it still fires after upgrading — the dedicated tools are no longer registered by default on native builds. Name them explicitly in <code>tools</code> / <code>allowedTools</code> to keep the old behavior.
+    </div>
+  </section>
+
+  <!-- ====================== 05 SECURITY & CYBER ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">05</span> Security &amp; cyber — Glasswing, Mythos, and a year of threat data</h2>
+    <div class="sec-tag">The most consequential research thread of the window</div>
+
+    <h3 class="sub">Project Glasswing tripled — and pivoted to patching</h3>
+    <p>The <b>2 June "Expanding Project Glasswing"</b> post (178 pts / 247 comments) is the substantive update. Partners went from <b>~50 to ~150 organizations across 15+ countries</b>, now spanning power, water, healthcare, communications, and hardware — well beyond the original software cohort. Partners have surfaced <b>more than 10,000 high-or-critical-severity flaws</b>, and the program made its first explicit pivot from <em>finding</em> vulnerabilities to <em>disclosing, fixing, and deploying patches</em> — with Mythos Preview now writing patches and running pre-release checks. <a>Claude Security</a> is named as the productized form (Opus 4.8 scanning codebases and suggesting patches).</p>
+
+    <div class="callout">
+      <span class="ttl">Read the fine print on "Mythos in the coming weeks"</span>
+      The Glasswing post explicitly conditions a Mythos-class general release on "highly robust safeguards… that we (and, to our knowledge, all other AI developers) have <em>yet to develop</em>." Treat the 28 May launch line about Mythos arriving "in the coming weeks" as <b>conditional, not committed.</b> A new "Cyber Verification Program" would grant Mythos-class access to additional orgs for specific cyberdefense tasks — no public details yet.
+    </div>
+
+    <h3 class="sub">A year of AI-enabled cyber threats, mapped to MITRE ATT&amp;CK</h3>
+    <p>The <b>3 June</b> Frontier Red Team post analyzed <b>832 accounts</b> banned for malicious cyber activity (Mar 2025 – Mar 2026; partial results also published in Verizon's 2026 DBIR). The findings reset some common heuristics:</p>
+    <ul class="tight">
+      <li><b>Threat level is inflating.</b> The share of actors rated medium-risk-or-higher rose from <b>33% in the first half to 56% in the second</b> (~1.7×).</li>
+      <li><b>AI is moving deeper into the kill chain.</b> AI-assisted phishing (initial access) fell 8.6%; AI for post-compromise account discovery rose 8.9%. Malware-writing is still the most common use (67.3%); lateral movement is rare (6.5%) but a bigger risk signal.</li>
+      <li><b>Old signals broke.</b> Technique count and which surface was used (Claude Code vs API vs chat) <em>no longer</em> correlate with risk. The durable signal is <b>scaffolding architecture</b> — whether the actor chains attack stages with autonomous decision-making. Anthropic is in talks with MITRE about extending ATT&amp;CK with agentic-orchestration techniques.</li>
+    </ul>
+    <div class="aside">
+      <span class="ttl">If you build abuse / DLP / agent-audit tooling</span>
+      The "number of techniques" heuristic is now publicly deprecated by the vendor. Feature-engineer toward <b>whether model-generated activity chains stages autonomously</b>, not how many distinct techniques it touches.
+    </div>
+
+    <h3 class="sub">The Mythos evidence trail</h3>
+    <p>Across the window the Mythos story moved from rumor to hard data point. A <code>claude-mythos-1-preview</code> model string and a "Claude Security" dashboard were reported (unconfirmed) inside Claude Code on 25 May. More concretely, <b>Apple credited "Calif.io in collaboration with Claude and Anthropic Research"</b> for kernel integer-overflow bug <b>CVE-2026-28952</b> (macOS Tahoe 26.5) — and a high-voted HN thread (145 pts) surfaced an Anthropic engineer's on-record line that the team "built a working exploit in five days" with Mythos Preview. It is the strongest external confirmation yet of the Glasswing/Mythos workflow producing a shipped, CVE'd OS-vendor vulnerability.</p>
+  </section>
+
+  <!-- ====================== 06 RESEARCH & ENGINEERING ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">06</span> Research &amp; engineering</h2>
+    <div class="sec-tag">Two reads worth your time</div>
+
+    <h3 class="sub">"How we contain Claude across products" — the highest-leverage single read</h3>
+    <p>Published 25 May, it front-paged on HN (139 pts) on 4 June and is now the canonical citation for the v2.1.160–162 design choices. The numbers practitioners keep quoting:</p>
+    <ul class="tight">
+      <li>Users approve roughly <b>93%</b> of permission prompts. Claude Code auto mode cuts prompts by <b>84%</b> and catches ~<b>83%</b> of overeager behaviors before they execute…</li>
+      <li>…but auto mode blocks only ~<b>0.4%</b> of benign commands while ~<b>17%</b> of overeager actions still get through — so it is <em>defense-in-depth, not a substitute for a sandbox.</em></li>
+      <li>Three containment tiers documented (gVisor for claude.ai; Seatbelt/bubblewrap HITL sandbox for Claude Code, with the runtime open-sourced; full local VM for Cowork), plus three on-record near-miss incidents and Gray Swan numbers (Opus 4.7 holds attack success to ~0.1% single-shot, ~5–6% after 100 adaptive attempts).</li>
+    </ul>
+
+    <h3 class="sub">"Coding agents in the social sciences" — adoption, quantified</h3>
+    <p>A 27 May Economic Research post surveyed <b>1,260 quantitative social scientists</b>. The headline gap: 81% have tried AI chatbots, but only <b>20% regularly use coding agents</b> — and among those, <b>Claude Code dominates at 86%</b> (Codex 31%). Adoption is steeply uneven (economists 39%, public health 6%; >2× the rate for typically-male vs -female names; top-25 universities ~40% higher). Usage is overwhelmingly code, not prose. Rare first-party, quantified evidence for an internal adoption/ROI case — and a preview of the disparity findings that will surface in governance conversations.</p>
+
+    <div class="pullquote">
+      "I think Anthropic and OpenAI have found product-market fit."
+      <span class="cite">Simon Willison · 27 May · 892 pts / 1,011 comments on HN</span>
+    </div>
+  </section>
+
+  <!-- ====================== 07 RELIABILITY ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">07</span> Reliability watch</h2>
+    <div class="sec-tag">A noisy eleven days on status.claude.com</div>
+
+    <p>The incident log was the busiest in recent memory — an Opus 4.7 drumbeat early, the first <em>major</em> Opus 4.8 incident two days post-launch, and a multi-hour Claude Code outage to close.</p>
+    <div class="timeline">
+      <div class="tl-row"><div class="date">25 May</div><div class="ev"><span class="sev maj">major</span><b>Opus 4.7 elevated errors</b>, ~4 hours (06:30–10:30 UTC) — second 4.7 incident in five days.</div></div>
+      <div class="tl-row"><div class="date">27 May</div><div class="ev"><span class="sev maj">major</span><b>Two back-to-back Opus 4.7 incidents</b> (~58 min + ~1h37m) across all four surfaces.</div></div>
+      <div class="tl-row"><div class="date">28 May</div><div class="ev"><span class="sev maj">major</span><b>Opus 4.7 elevated errors</b>, ~39 min — the fourth 4.7 major in roughly a week.</div></div>
+      <div class="tl-row"><div class="date">29 May</div><div class="ev"><span class="sev maj">major</span><b>First major Opus 4.8 incident</b> (18:35–19:12 UTC), ~2.5 days after launch.</div></div>
+      <div class="tl-row"><div class="date">2 Jun</div><div class="ev"><span class="sev maj">major</span><b>Elevated errors on multiple models</b>, ~5h45m.</div></div>
+      <div class="tl-row"><div class="date">3 Jun</div><div class="ev"><span class="sev maj">major</span><b>"Issue affecting some Claude Code services," ~3h20m (04:17–07:36 UTC)</b> — the biggest Claude-Code-specific incident of the window.</div></div>
+    </div>
+    <div class="callout">
+      <span class="ttl">Action item</span>
+      Four major Opus 4.7 events in a week, plus a major 4.8 event and a multi-model outage, make <b>retry-with-fallback wiring non-optional</b> for production traffic in the EU/Asia-morning UTC window. Note the limit: Claude Code's "switch to <code>--fallback-model</code> when the primary is <em>not found</em>" does <b>not</b> cover 5xx / elevated-error events on a model that <em>is</em> found — you still need your own backoff + fallback path.
+    </div>
+  </section>
+
+  <!-- ====================== 08 RUMORS ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">08</span> Rumors, leaks &amp; money</h2>
+    <div class="sec-tag">What resolved, what softened, what's still air</div>
+    <ul class="tight">
+      <li><b>Funding — RESOLVED.</b> The "$30B at $900B" leak (27 May) and the WSJ/TechCrunch revenue rumors were superseded by the official <b>$65B Series H at $965B</b> (28 May). Cite the first-party numbers, not the leaks.</li>
+      <li><b>IPO — CONFIRMED as an option.</b> The draft S-1 (1 Jun) makes the IPO path first-party. Valuation price-discovery hasn't happened, so 11-figure valuations remain projections.</li>
+      <li><b>"Opus 4.8 today?" — RESOLVED true.</b> The single-X-post rumor from 28 May shipped that afternoon.</li>
+      <li><b>"Mythos in the coming weeks" — SOFTENED.</b> The 2 Jun Glasswing post conditions GA on safeguards no AI developer has yet built (see §5).</li>
+      <li><b>Counter-narrative.</b> Michael Burry's sub-$1T skepticism is the highest-vote skeptic thread — useful framing to have ready, not an operational signal.</li>
+    </ul>
+  </section>
+
+  <!-- ====================== 09 COMMUNITY ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">09</span> From the community</h2>
+    <div class="sec-tag">Press, tooling, and the enterprise-adoption debate</div>
+    <div class="two-col">
+      <p><b>The PMF essay.</b> Simon Willison's "product-market fit" piece (892 pts) argues enterprise coding agents are the labs' PMF moment, now that both Anthropic and OpenAI have moved enterprise plans to API-rate pricing. His own <code>ccusage</code> run: ~$1,200/mo of Claude Code tokens for $200 in subscription — the "17× subsidy" framing that also ran as its own Show HN.</p>
+      <p><b>The skeptical counterweight.</b> Fortune reported <b>Uber burned its entire 2026 AI coding-tools budget in four months</b>, with its COO unable to "draw a line" between Claude Code usage stats and shipped customer value (CEO: ~10% of committed code is agent-built). The same cycle carried The Verge's report that <b>Microsoft began canceling most of its direct Claude Code licenses</b>, moving engineers to GitHub Copilot CLI — part cost, part dogfooding. The retention question to be ready for: tool-use stats vs. shipped value.</p>
+      <p><b>Interpretability, in public.</b> Co-founder Chris Olah's remarks at the Vatican (on Pope Leo XIV's AI encyclical) included an on-record attestation that the interp team has found "internal states that functionally mirror joy, satisfaction, fear, grief, and unease." No paper yet — a forward signal more than a citable result.</p>
+      <p><b>Tooling &amp; field notes.</b> A "Claude Code as a Daily Driver" guide (CLAUDE.md, skills, subagents, plugins, MCPs) drew an active HN thread; "Everything You Can Configure That the Docs Don't Tell You" (121 pts) is a power-user reference. <em>Launch HN: Hyper (YC P26)</em> signals a wave of "company memory layer" startups targeting the Claude Code / Cowork hook surface. On the org side, Anthropic appointed KiYoung Choi as Korea Representative Director ahead of a Seoul office.</p>
+    </div>
+  </section>
+
+  <!-- ====================== 10 CHECKLIST ====================== -->
+  <section>
+    <h2 class="sec"><span class="num">10</span> The practitioner's checklist</h2>
+    <div class="sec-tag">Ten days of changes, distilled to what you should actually do</div>
+    <ol class="steps">
+      <li><b>Rename your triggers.</b> Update docs, scripts, and hooks that key off the word <code>workflow</code> → <code>ultracode</code> (v2.1.160).</li>
+      <li><b>Floor your Claude Code version at 2.1.156+</b> if you run Opus 4.8 (thinking-block API-error fix); 2.1.162 is current.</li>
+      <li><b>Re-test hook-based search auditing.</b> Native SDK builds now default to embedded <code>find</code>/<code>grep</code>; name <code>Grep</code>/<code>Glob</code> in <code>tools</code>/<code>allowedTools</code> if you intercept them.</li>
+      <li><b>Add retry-with-fallback</b> for model incidents — <code>--fallback-model</code> won't save you from 5xx on a model that exists.</li>
+      <li><b>Rotate anything exposed.</b> Treat pre-v2.1.161 <code>claude mcp</code> output / screencaps as leaked secrets.</li>
+      <li><b>Enable Auto mode on Bedrock/Vertex/Foundry</b> (<code>CLAUDE_CODE_ENABLE_AUTO_MODE=1</code>) if you route through a hyperscaler.</li>
+      <li><b>Check stray MCP <code>timeout</code> values.</b> A <code>timeout:500</code> was silently aborting every tool call before v2.1.162; sub-1000 ms now falls back to the default.</li>
+      <li><b>Reach for mid-conversation system messages</b> for long-running agents that need to revise instructions without busting the prompt cache (Opus 4.8 only).</li>
+      <li><b>Expect a cache-metrics discontinuity</b> at v2.1.152 — <code>cache_creation_input_tokens</code> was previously under-reported in some configs.</li>
+      <li><b>Re-tool your abuse/agent-audit features</b> toward autonomous stage-chaining, not technique counts (3 Jun MITRE post).</li>
+    </ol>
+  </section>
+
+  <div class="endrule">· · ·</div>
+
+  <!-- ====================== SOURCES ====================== -->
+  <section style="margin-top:8pt;">
+    <h2 class="sec"><span class="num">§</span> Sources &amp; method</h2>
+    <div class="sec-tag">In-window, first-party-verified where possible</div>
+    <p class="src"><b>First-party —</b> Introducing Claude Opus 4.8 + System Card · Series H announcement · Confidential draft S-1 (Rule 135) · Expanding Project Glasswing · "What we learned mapping a year of AI-enabled cyber threats" (MITRE ATT&amp;CK) · "How we contain Claude across products" (eng) · "Coding agents in the social sciences" (research) · Chris Olah / Pope Leo XIV encyclical remarks · KiYoung Choi appointment · platform &amp; support release notes.</p>
+    <p class="src"><b>Releases —</b> Claude Code v2.1.149 → v2.1.162 (GitHub releases + CHANGELOG) · <span class="mono" style="font-size:7.6pt;">claude-agent-sdk-typescript</span> v0.3.152 → v0.3.162 · <span class="mono" style="font-size:7.6pt;">claude-agent-sdk-python</span> v0.2.88 / v0.2.89 · <span class="mono" style="font-size:7.6pt;">anthropic-sdk-python</span> v0.105.x · <span class="mono" style="font-size:7.6pt;">anthropic-sdk-typescript</span> sdk-v0.100.x.</p>
+    <p class="src"><b>Status &amp; community —</b> status.claude.com incidents API (3 major + multiple minor in window) · Hacker News via Algolia <span class="mono" style="font-size:7.6pt;">search_by_date</span> · The Economist, NYT, Fortune, The Verge, Nature, Apple security advisory (CVE-2026-28952), Simon Willison.</p>
+    <div style="margin-top:7pt;">
+      <span class="chip">Opus 4.8 · 28 May</span>
+      <span class="chip">Series H · $965B</span>
+      <span class="chip">Draft S-1 · 1 Jun</span>
+      <span class="chip">Glasswing ×3</span>
+      <span class="chip">MITRE ATT&amp;CK</span>
+      <span class="chip">v2.1.152→162</span>
+      <span class="chip">workflow→ultracode</span>
+      <span class="chip">CVE-2026-28952</span>
+      <span class="chip">6 major incidents</span>
+    </div>
+    <div class="colophon">
+      Compiled from seven daily Anthropic briefings spanning 2026-05-25 (morning &amp; afternoon editions), 05-26, 05-27, 05-28, 05-29, and the 06-04 catch-up briefing (which covered the 29 May – 4 Jun gap). Figures and quotations are reproduced as stated in those briefings; where a source flagged a number as unverified or a page date as unconfirmed, that caveat carries forward. Dates are UTC. Generated 2026-06-06 for an applied-AI-engineering readership.
+    </div>
+  </section>
+
+</body>
+</html>
